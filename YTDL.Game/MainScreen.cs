@@ -5,7 +5,7 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Screens;
 using osuTK.Graphics;
 
-namespace YouTubeDLGUIRenewed.Game
+namespace YtdlGui.Game
 {
     public class MainScreen : Screen
     {
@@ -27,10 +27,6 @@ namespace YouTubeDLGUIRenewed.Game
                     Origin = Anchor.TopCentre,
                     Font = FontUsage.Default.With(size: 40)
                 },
-                new SpinningBox
-                {
-                    Anchor = Anchor.Centre,
-                }
             };
         }
     }

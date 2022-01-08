@@ -5,9 +5,9 @@ using osu.Framework.IO.Stores;
 using osuTK;
 using YouTubeDLGUIRenewed.Resources;
 
-namespace YouTubeDLGUIRenewed.Game
+namespace YtdlGui.Game
 {
-    public class YouTubeDLGUIRenewedGameBase : osu.Framework.Game
+    public class YtdlGameBase : osu.Framework.Game
     {
         // Anything in this class is shared between the test browser and the game implementation.
         // It allows for caching global dependencies that should be accessible to tests, or changing
@@ -15,7 +15,7 @@ namespace YouTubeDLGUIRenewed.Game
 
         protected override Container<Drawable> Content { get; }
 
-        protected YouTubeDLGUIRenewedGameBase()
+        protected YtdlGameBase()
         {
             // Ensure game and tests scale with window size and screen DPI.
             base.Content.Add(Content = new DrawSizePreservingFillContainer

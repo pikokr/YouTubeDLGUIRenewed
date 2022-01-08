@@ -2,9 +2,9 @@
 using osu.Framework.Graphics;
 using osu.Framework.Screens;
 
-namespace YouTubeDLGUIRenewed.Game
+namespace YtdlGui.Game
 {
-    public class YouTubeDLGUIRenewedGame : YouTubeDLGUIRenewedGameBase
+    public class YtdlGame : YtdlGameBase
     {
         private ScreenStack screenStack;
 

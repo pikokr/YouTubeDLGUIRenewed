@@ -3,9 +3,9 @@ using osu.Framework.Graphics.Cursor;
 using osu.Framework.Platform;
 using osu.Framework.Testing;
 
-namespace YouTubeDLGUIRenewed.Game.Tests
+namespace YtdlGui.Game.Tests
 {
-    public class YouTubeDLGUIRenewedTestBrowser : YouTubeDLGUIRenewedGameBase
+    public class YtdlTestBrowser : YtdlGameBase
     {
         protected override void LoadComplete()
         {
@@ -13,7 +13,7 @@ namespace YouTubeDLGUIRenewed.Game.Tests
 
             AddRange(new Drawable[]
             {
-                new TestBrowser("YouTubeDLGUIRenewed"),
+                new TestBrowser("YTDL"),
                 new CursorContainer()
             });
         }

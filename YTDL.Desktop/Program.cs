@@ -1,6 +1,6 @@
 ﻿using osu.Framework.Platform;
 using osu.Framework;
-using YouTubeDLGUIRenewed.Game;
+using YtdlGui.Game;
 
 namespace YouTubeDLGUIRenewed.Desktop
 {
@@ -9,7 +9,7 @@ namespace YouTubeDLGUIRenewed.Desktop
         public static void Main()
         {
             using (GameHost host = Host.GetSuitableHost(@"YouTubeDLGUIRenewed"))
-            using (osu.Framework.Game game = new YouTubeDLGUIRenewedGame())
+            using (osu.Framework.Game game = new YtdlGame())
                 host.Run(game);
         }
     }
