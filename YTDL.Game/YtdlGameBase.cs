@@ -1,17 +1,18 @@
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
+using osu.Framework.Graphics.Textures;
 using osu.Framework.IO.Stores;
 using osuTK;
-using YouTubeDLGUIRenewed.Resources;
+using YTDL.Resources;
 
 namespace YtdlGui.Game
 {
     public class YtdlGameBase : osu.Framework.Game
     {
-        // Anything in this class is shared between the test browser and the game implementation.
-        // It allows for caching global dependencies that should be accessible to tests, or changing
-        // the screen scaling for all components including the test browser and framework overlays.
+        private DependencyContainer dependencies;
+
+        protected override IReadOnlyDependencyContainer CreateChildDependencies(IReadOnlyDependencyContainer parent) => dependencies = new DependencyContainer(base.CreateChildDependencies(parent));
 
         protected override Container<Drawable> Content { get; }
 
@@ -21,14 +22,23 @@ namespace YtdlGui.Game
             base.Content.Add(Content = new DrawSizePreservingFillContainer
             {
                 // You may want to change TargetDrawSize to your "default" resolution, which will decide how things scale and position when using absolute coordinates.
-                TargetDrawSize = new Vector2(1366, 768)
+                TargetDrawSize = new Vector2(1280, 720)
             });
         }
 
         [BackgroundDependencyLoader]
         private void load()
         {
-            Resources.AddStore(new DllResourceStore(typeof(YouTubeDLGUIRenewedResources).Assembly));
+            var dllStore = new DllResourceStore(typeof(YtdlResources).Assembly);
+            Resources.AddStore(dllStore);
+
+            var largeStore = new LargeTextureStore(Host.CreateTextureLoaderStore(new NamespacedResourceStore<byte[]>(Resources, @"Textures")));
+            largeStore.AddStore(Host.CreateTextureLoaderStore(new OnlineStore()));
+            dependencies.Cache(largeStore);
+
+            AddFont(Resources, @"Fonts/NanumSquareRound");
+            AddFont(Resources, @"Fonts/NanumSquareRound-Light");
+            AddFont(Resources, @"Fonts/NanumSquareRound-Bold");
         }
     }
 }
