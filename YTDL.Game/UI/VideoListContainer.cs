@@ -13,6 +13,6 @@ namespace YtdlGui.Game.UI
 
         protected override ScrollContainer<Drawable> CreateScrollContainer() => new BasicScrollContainer();
 
-        protected override RearrangeableListItem<Video> CreateDrawable(Video item) => new VideoListItem(item);
+        protected override RearrangeableListItem<Video> CreateDrawable(Video item) => new VideoListItem(item, this);
     }
 }

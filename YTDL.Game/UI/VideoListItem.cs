@@ -8,6 +8,7 @@ using osu.Framework.Graphics.Sprites;
 using osu.Framework.Logging;
 using osuTK.Graphics;
 using YtdlGui.Game.Structs;
+using YtdlGui.Game.UI.Components;
 
 namespace YtdlGui.Game.UI
 {
@@ -21,13 +22,17 @@ namespace YtdlGui.Game.UI
         private TextFlowContainer titleText;
         private TextFlowContainer creatorText;
 
-        public VideoListItem(Video video)
+        public VideoListContainer ListContainer;
+
+        public VideoListItem(Video video, VideoListContainer videoListContainer)
             : base(video)
         {
             RelativeSizeAxes = Axes.X;
             AutoSizeAxes = Axes.Y;
 
             Item = video;
+
+            ListContainer = videoListContainer;
 
             title.BindTo(video.Title);
             creator.BindTo(video.Creator);
@@ -147,7 +152,7 @@ namespace YtdlGui.Game.UI
                                                 },
                                                 new FillFlowContainer
                                                 {
-                                                    Margin = new MarginPadding { Left = 10 },
+                                                    Margin = new MarginPadding { Left = 20 },
                                                     Anchor = Anchor.CentreLeft,
                                                     Origin = Anchor.CentreLeft,
                                                     AutoSizeAxes = Axes.Y,
@@ -169,9 +174,21 @@ namespace YtdlGui.Game.UI
                                                             AutoSizeAxes = Axes.Y,
                                                         },
                                                     }
-                                                }
+                                                },
                                             },
                                         },
+                                    }
+                                },
+                                new FillFlowContainer
+                                {
+                                    Margin = new MarginPadding { Right = 20 },
+                                    Anchor = Anchor.CentreRight,
+                                    Origin = Anchor.CentreRight,
+                                    AutoSizeAxes = Axes.Y,
+                                    Direction = FillDirection.Vertical,
+                                    Children = new Drawable[]
+                                    {
+                                        new DeleteVideoButton(this)
                                     }
                                 }
                             }
