@@ -10,11 +10,11 @@ using osuTK.Graphics;
 using YtdlGui.Game.Structs;
 using YtdlGui.Game.UI.Components;
 
-namespace YtdlGui.Game.UI
+namespace YtdlGui.Game.UI.Video
 {
-    public class VideoListItem : RearrangeableListItem<Video>
+    public class VideoListItem : RearrangeableListItem<VideoItem>
     {
-        public readonly Video Item;
+        public readonly VideoItem Item;
 
         private readonly Bindable<string> title = new();
         private readonly Bindable<string> creator = new();
@@ -24,7 +24,7 @@ namespace YtdlGui.Game.UI
 
         public VideoListContainer ListContainer;
 
-        public VideoListItem(Video video, VideoListContainer videoListContainer)
+        public VideoListItem(VideoItem video, VideoListContainer videoListContainer)
             : base(video)
         {
             RelativeSizeAxes = Axes.X;
@@ -34,8 +34,8 @@ namespace YtdlGui.Game.UI
 
             ListContainer = videoListContainer;
 
-            title.BindTo(video.Title);
-            creator.BindTo(video.Creator);
+            title.Value = video.Video.Title;
+            creator.Value = video.Video.Author.Title;
         }
 
         protected override void LoadComplete()
@@ -155,14 +155,13 @@ namespace YtdlGui.Game.UI
                                                     Margin = new MarginPadding { Left = 20 },
                                                     Anchor = Anchor.CentreLeft,
                                                     Origin = Anchor.CentreLeft,
-                                                    AutoSizeAxes = Axes.Y,
+                                                    AutoSizeAxes = Axes.Both,
                                                     Direction = FillDirection.Vertical,
                                                     Children = new Drawable[]
                                                     {
                                                         titleText = new TextFlowContainer(fontParameters)
                                                         {
-                                                            RelativeSizeAxes = Axes.X,
-                                                            AutoSizeAxes = Axes.Y,
+                                                            AutoSizeAxes = Axes.Both,
                                                         },
                                                         creatorText = new TextFlowContainer(text =>
                                                         {
@@ -170,8 +169,7 @@ namespace YtdlGui.Game.UI
                                                             text.Font = text.Font.With(size: 24);
                                                         })
                                                         {
-                                                            RelativeSizeAxes = Axes.X,
-                                                            AutoSizeAxes = Axes.Y,
+                                                            AutoSizeAxes = Axes.Both,
                                                         },
                                                     }
                                                 },

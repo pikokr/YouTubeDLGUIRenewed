@@ -3,13 +3,13 @@ using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using YtdlGui.Game.Structs;
 
-namespace YtdlGui.Game.UI
+namespace YtdlGui.Game.UI.Video
 {
     public class ThumbnailContainer : Container
     {
-        private readonly Video video;
+        private readonly VideoItem video;
 
-        public ThumbnailContainer(Video vid)
+        public ThumbnailContainer(VideoItem vid)
         {
             RelativeSizeAxes = Axes.Both;
             CornerRadius = 5f;

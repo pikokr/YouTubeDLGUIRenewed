@@ -4,6 +4,7 @@ using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Textures;
 using osu.Framework.IO.Stores;
 using osuTK;
+using YoutubeExplode;
 using YTDL.Resources;
 
 namespace YtdlGui.Game
@@ -35,6 +36,8 @@ namespace YtdlGui.Game
             var largeStore = new LargeTextureStore(Host.CreateTextureLoaderStore(new NamespacedResourceStore<byte[]>(Resources, @"Textures")));
             largeStore.AddStore(Host.CreateTextureLoaderStore(new OnlineStore()));
             dependencies.Cache(largeStore);
+
+            dependencies.Cache(new YoutubeClient());
 
             AddFont(Resources, @"Fonts/NanumSquareRound");
             AddFont(Resources, @"Fonts/NanumSquareRound-Light");

@@ -2,9 +2,9 @@
 using osu.Framework.Graphics.Containers;
 using YtdlGui.Game.Structs;
 
-namespace YtdlGui.Game.UI
+namespace YtdlGui.Game.UI.Video
 {
-    public class VideoListContainer : RearrangeableListContainer<Video>
+    public class VideoListContainer : RearrangeableListContainer<VideoItem>
     {
         public VideoListContainer()
         {
@@ -13,6 +13,6 @@ namespace YtdlGui.Game.UI
 
         protected override ScrollContainer<Drawable> CreateScrollContainer() => new BasicScrollContainer();
 
-        protected override RearrangeableListItem<Video> CreateDrawable(Video item) => new VideoListItem(item, this);
+        protected override RearrangeableListItem<VideoItem> CreateDrawable(VideoItem item) => new VideoListItem(item, this);
     }
 }

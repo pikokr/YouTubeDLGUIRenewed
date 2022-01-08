@@ -1,32 +1,52 @@
 using osu.Framework.Allocation;
 using osu.Framework.Graphics;
-using osu.Framework.Graphics.Shapes;
-using osu.Framework.Graphics.Sprites;
+using osu.Framework.Graphics.Containers;
 using osu.Framework.Screens;
-using osuTK.Graphics;
+using YtdlGui.Game.UI.Sidebar;
+using YtdlGui.Game.UI.Toolbar;
+using YtdlGui.Game.UI.Video;
 
 namespace YtdlGui.Game
 {
     public class MainScreen : Screen
     {
+        public VideoListContainer VideoListContainer;
+
         [BackgroundDependencyLoader]
         private void load()
         {
             InternalChildren = new Drawable[]
             {
-                new Box
+                new FillFlowContainer
                 {
-                    Colour = Color4.Violet,
                     RelativeSizeAxes = Axes.Both,
-                },
-                new SpriteText
-                {
-                    Y = 20,
-                    Text = "Main Screen",
-                    Anchor = Anchor.TopCentre,
-                    Origin = Anchor.TopCentre,
-                    Font = FontUsage.Default.With(size: 40)
-                },
+                    Direction = FillDirection.Vertical,
+                    Children = new Drawable[]
+                    {
+                        new TopBar(),
+                        new FillFlowContainer
+                        {
+                            RelativeSizeAxes = Axes.Both,
+                            Direction = FillDirection.Horizontal,
+                            Children = new Drawable[]
+                            {
+                                new Sidebar(this),
+                                new Container
+                                {
+                                    RelativeSizeAxes = Axes.Both,
+                                    Padding = new MarginPadding
+                                    {
+                                        Right = 310,
+                                        Left = 10,
+                                        Top = 10,
+                                        Bottom = 60
+                                    },
+                                    Child = VideoListContainer = new VideoListContainer()
+                                }
+                            }
+                        }
+                    }
+                }
             };
         }
     }

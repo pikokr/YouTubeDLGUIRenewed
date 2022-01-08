@@ -1,29 +1,24 @@
-﻿using osu.Framework.Allocation;
-using osu.Framework.Graphics;
+﻿using osu.Framework.Graphics;
 using osu.Framework.Graphics.Containers;
 using osu.Framework.Graphics.Shapes;
 using osu.Framework.Graphics.Sprites;
-using osu.Framework.Graphics.Textures;
 using osu.Framework.Input.Events;
 using osuTK.Graphics;
-using YtdlGui.Game.UI.Video;
 
-namespace YtdlGui.Game.UI.Components
+namespace YtdlGui.Game.UI.Sidebar
 {
-    public class ListActionButton : ClickableContainer
+    public class DefaultButton : ClickableContainer
     {
         protected readonly Box Background;
-        protected readonly Sprite Icon;
+        protected readonly SpriteText Text;
 
         protected float InactiveOpacity = 0.4f;
         protected float ActiveOpacity = 0.6f;
 
-        public ListActionButton()
+        public DefaultButton()
         {
-            Width = 30;
+            RelativeSizeAxes = Axes.X;
             Height = 30;
-            Anchor = Anchor.CentreRight;
-            Origin = Anchor.CentreRight;
             CornerRadius = 5;
             Masking = true;
 
@@ -40,12 +35,10 @@ namespace YtdlGui.Game.UI.Components
                     RelativeSizeAxes = Axes.Both,
                     Children = new Drawable[]
                     {
-                        Icon = new Sprite
+                        Text = new SpriteText
                         {
                             Origin = Anchor.Centre,
                             Anchor = Anchor.Centre,
-                            Width = 20,
-                            Height = 20
                         }
                     }
                 }
@@ -61,32 +54,6 @@ namespace YtdlGui.Game.UI.Components
         protected override void OnHoverLost(HoverLostEvent e)
         {
             Background.FadeTo(InactiveOpacity, 200, Easing.OutQuint);
-        }
-    }
-
-    public class DeleteVideoButton : ListActionButton
-    {
-        private readonly VideoListItem item;
-
-        public DeleteVideoButton(VideoListItem listItem)
-        {
-            item = listItem;
-        }
-
-        protected override bool OnClick(ClickEvent e)
-        {
-            item.ListContainer.Items.Remove(item.Item);
-            return base.OnClick(e);
-        }
-
-        [BackgroundDependencyLoader]
-        private void load(TextureStore textures)
-        {
-            InactiveOpacity = 0.6f;
-            ActiveOpacity = 0.8f;
-            Background.Colour = Color4.Red;
-            Background.Alpha = InactiveOpacity;
-            Icon.Texture = textures.Get(@"Icons/delete");
         }
     }
 }
