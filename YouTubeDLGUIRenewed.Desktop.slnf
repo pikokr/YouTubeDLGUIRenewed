@@ -1,0 +1,11 @@
+﻿{
+  "solution": {
+    "path": "YouTubeDLGUIRenewed.sln",
+    "projects": [
+      "YouTubeDLGUIRenewed.Desktop\\YouTubeDLGUIRenewed.Desktop.csproj",
+      "YouTubeDLGUIRenewed.Game\\YouTubeDLGUIRenewed.Game.csproj",
+      "YouTubeDLGUIRenewed.Game.Tests\\YouTubeDLGUIRenewed.Game.Tests.csproj",
+      "YouTubeDLGUIRenewed.Resources\\YouTubeDLGUIRenewed.Resources.csproj"
+    ]
+  }
+}

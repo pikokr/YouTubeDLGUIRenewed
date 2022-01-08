@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "path": "YouTubeDLGUIRenewed.sln",
+    "projects": [
+      "YouTubeDLGUIRenewed.Game\\YouTubeDLGUIRenewed.Game.csproj",
+      "YouTubeDLGUIRenewed.Resources\\YouTubeDLGUIRenewed.Resources.csproj",
+      "YouTubeDLGUIRenewed.iOS\\YouTubeDLGUIRenewed.iOS.csproj"
+    ]
+  }
+}
